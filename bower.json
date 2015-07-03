@@ -1,0 +1,18 @@
+{
+  "name": "Angular Scripts",
+  "version": "0.1",
+  "dependencies": {
+    "backbone": "latest",
+    "bootstrap": "~3.3.4",
+    "metisMenu": "~2.0.0",
+    "fontawesome": "~4.3.0",
+    "bootstrap-validator": "~0.8.1",
+    "angular": "~1.3.15",
+    "angular-animate": "~1.3.15",
+    "angular-bootstrap": "~0.13.0",
+    "angular-sanitize": "~1.3.15",
+    "angular-touch": "~1.3.15",
+    "angular-route": "~1.3.15",
+    "bootstrap.growl": "~3.1.3"
+  }
+}
