@@ -16,11 +16,11 @@
 		 	 </a>
 		  </span>
 		</div>
-		<div class="col-md-8 list-group" style="border-left: 3px solid green;">
+		<div class="col-md-8 list-group">
 			<form>
 			<table class="table">
 				<tr>
-					<th>User Details</th>
+					<th>User userDetails </th>
 					<th>
 						<button class="btn btn-primary pull-right" ng-click="editUser(userdetails)">{{btn}}
 						</button>
@@ -49,6 +49,12 @@
 					</td>
 				</tr>
 			</table> 
+				<div class="form-group">
+					<span style="color:red">{{error.message}}</span>
+				</div>
+				<div class="form-group">
+					<span style="color:green">{{result.result}}</span>
+				</div>
 			</form>
 		</div>
 	   </div>
