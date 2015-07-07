@@ -49,6 +49,9 @@ Route::group([
 		Route::group(['prefix' => 'api/v1'], function() {
 		    Route::resource('manage-users', 'Api\v1\UserController');
 		    Route::resource('campaign', 'Api\v1\CampaignController');
+		    Route::resource('customer', 'Api\v1\customerController');
+		    Route::resource('invoice', 'Api\v1\invoiceController');
+		    Route::resource('invoice-items', 'Api\v1\invoiceItemController');
 		    Route::resource('test', 'Api\v1\testController');
 		});	
 		Route::resource('password', 'ChangePasswordController', ['only' => ['index', 'update']]);

@@ -1,0 +1,62 @@
+<div  ng-app="dashboardApp" ng-controller="createCustomerCtrl">
+	<div class="page-header-wrap">
+		<h1 class="page-heading">{{customer.action}} Customer</h1>
+		<a href="javascript:;" onclick="window.history.back();" ng-click="resetCustomer()" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-chevron-left"></i> Back</a>
+	</div>
+	<div class="content-wrapper">	
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<form action="javascript:;" method="" class="form-horizontal m-t" role="form" name="customerForm">
+							<div class="form-group">
+								<label class="col-sm-3 control-label">First Name</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" name="first_name" ng-model="customer.first_name" required>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Last Name</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" name="last_name" ng-model="customer.last_name" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Business Name</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" name="business_name" ng-model="customer.business_name" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Mobile</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" name="mobile" ng-model="customer.mobile" required>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Email</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" name="email" ng-model="customer.email" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Address</label>
+								<div class="col-sm-7">
+									<textarea class="form-control" name="address" ng-model="customer.address" required></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-7 col-sm-offset-3">
+									<button type="submit" ng-click="captureCustomer()" class="btn btn-primary">Save Customer</button>
+									<button ng-click="reset()" class="btn btn-default">Reset</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

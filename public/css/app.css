@@ -6519,8 +6519,11 @@ a.list-group-item:focus {
 .navbar-header .fa {
   font-size: 22px;
 }
-table {
-  border-left: 3px solid green;
+.page-header-wrap {
+  border-top: 1px solid #DEDEDE;
+}
+.panel-body {
+  background-color: #EFEFEF;
 }
 /*
  * Globals

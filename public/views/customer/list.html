@@ -1,0 +1,39 @@
+<div ng-controller="customerCtrl">
+	<div class="page-header-wrap"> 
+		<h1 class="page-heading">Customer Manager</h1>
+		<a href="#/create-customer" class="btn btn-sm btn-primary pull-right" ng-click="resetCustomer()"><i class="glyphicon glyphicon-plus"></i>Add Customer</a>
+	</div>
+	<div class="row">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Mobile</th>
+					<th>Email</th>
+					<th width="190px">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="customer in customerList">
+					<td>{{customer.first_name}}</td>
+					<td>{{customer.last_name}}</td>
+					<td>{{customer.mobile}}</td>	
+					<td>{{customer.email}}</td>	
+					<td>
+						<a ng-click="editCustomer(customer)" tooltip-placement="top" tooltip="Edit" class="btn btn-success btn-sm">
+							<i class="fa fa-edit"></i>
+						</a>
+						<a ng-click="viewCustomer(customer)" tooltip-placement="top" tooltip="View" class="btn btn-info btn-sm">
+							<i class="fa fa-eye"></i>
+						</a>
+						<a ng-click="delete(customer)" tooltip-placement="top" tooltip="Delete" class="btn btn-danger btn-sm">
+							<i class="fa fa-remove"></i>
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</div>

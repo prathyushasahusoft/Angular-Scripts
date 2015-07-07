@@ -1,0 +1,39 @@
+<div ng-controller="invoiceCtrl">
+	<div class="page-header-wrap"> 
+		<h1 class="page-heading">Invoice Manager</h1>
+		<a href="#/create-invoices" class="btn btn-sm btn-primary pull-right" ng-click="resetInvoice()"><i class="glyphicon glyphicon-plus"></i>Add Invoice</a>
+	</div>
+	<div class="row">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Invoice Number</th>
+					<th>Customer Name</th>
+					<th>Due Date</th>
+					<th>Paid Date</th>
+					<th width="190px">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="invoice in invoiceList">
+					<td>{{invoice.invoice_number}}</td>
+					<td>{{invoice.customer.first_name}}</td>
+					<td>{{invoice.due_date}}</td>	
+					<td>{{invoice.paid_date}}</td>	
+					<td>
+						<a ng-click="editInvoice(invoice)" tooltip-placement="top" tooltip="Edit" class="btn btn-success btn-sm">
+							<i class="fa fa-edit"></i>
+						</a>
+						<a href="#/view-invoice" ng-click="viewInvoice(invoice)" tooltip-placement="top" tooltip="View" class="btn btn-info btn-sm">
+							<i class="fa fa-eye"></i>
+						</a>
+						<a ng-click="delete(invoice)" tooltip-placement="top" tooltip="Delete" class="btn btn-danger btn-sm">
+							<i class="fa fa-remove"></i>
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</div>

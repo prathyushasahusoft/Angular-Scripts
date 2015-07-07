@@ -1,0 +1,38 @@
+<div ng-controller="crudCtrl">
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	  	<ol class="breadcrumb">
+		  <li><a href="#">Crud</a></li>
+		  <li><a href="#">List</a></li>
+		</ol>
+		<a href="#/crud-create" class="btn btn-primary pull-right" ng-click="create()">Create
+		</a>
+	  </div>
+		<div class="col-md-12">
+			<form>
+			<table class="table">
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>DOB</th>
+					<th>Qualification</th>
+					<th>Action</th>
+				</tr>
+				<tr>
+					<th>{{firstname}}</th>
+					<th>{{lastname}}</th>
+					<th>{{DOB}}</th>
+					<th>{{qualification}}</th>
+				</tr>
+			</table> 
+				<div class="form-group">
+					<span style="color:red">{{error.message}}</span>
+				</div>
+				<div class="form-group">
+					<span style="color:green">{{result.result}}</span>
+				</div>
+			</form>
+		</div>
+	   </div>
+	</div>
+</div>

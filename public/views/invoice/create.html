@@ -1,0 +1,70 @@
+<div  ng-app="dashboardApp" ng-controller="invoiceCreateCtrl">
+	<div class="page-header-wrap">
+		<h1 class="page-heading">{{customer.action}} Customer</h1>
+		<a href="javascript:;" onclick="window.history.back();" ng-click="resetCustomer()" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-chevron-left"></i> Back</a>
+	</div>
+	<div class="content-wrapper">	
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<form action="javascript:;" method="" class="form-horizontal m-t" role="form" name="customerForm">
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Select Customer</label>
+								<div class="dropdown col-sm-3">
+								  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								   {{selectedCustomer.first_name}}
+								    <span class="caret"></span>
+								  </button>
+								  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+								    <li  ng-repeat="customer in customerList">
+											<a ng-click="setCustomer(customer.id, customer.first_name)" ng-model="invoice.customer_id">{{customer.first_name}}
+											</a>
+									</li>
+								  </ul>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Attn</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" name="attn" ng-model="invoice.attn" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">invoice_number</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" name="invoice_number" ng-model="invoice.invoice_number" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Description</label>
+								<div class="col-sm-7">
+									<textarea class="form-control" name="description" ng-model="invoice.description" required></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Due Date</label>
+								<div class="col-sm-7">
+									<textarea class="form-control" name="due_date" ng-model="invoice.due_date" required></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">paid_date</label>
+								<div class="col-sm-7">
+									<textarea class="form-control" name="paid_date" ng-model="invoice.paid_date" required></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-7 col-sm-offset-3">
+									<button type="submit" ng-click="captureInvoice()" class="btn btn-primary">Save Customer</button>
+									<button ng-click="reset()" class="btn btn-default">Reset</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

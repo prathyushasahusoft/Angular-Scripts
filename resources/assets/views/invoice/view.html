@@ -1,0 +1,90 @@
+<div ng-controller="invoiceViewCtrl">
+	<div class="page-header-wrap"> 
+		<h1 class="page-heading">MunshiApp</h1>
+	</div>
+	<div class="page-header-wrap">
+		<div class="row">
+			<div class="col-md-3"> 
+				<h4	 class="page-heading">Client:</h4>
+				<div class="panel panel-default">
+				  <div class="panel-body">
+						<address>
+							<span>{{invoice.customer.business_name}}</span></br>
+							{{invoice.customer.address}}</br>
+							<span>P:{{invoice.customer.mobile}}</span>
+						</address>
+						<p>Email:<a>prathyusha@sahusoft.com</a></p>
+				  </div>
+				 </div>
+			</div>
+			<div class="col-md-offset-5 col-md-4"> 
+				<h4	 class="page-heading">Payment Details:</h4>
+					<p>V.A.T Reg#:222111444</p>
+					<p>Account Name:Company Ltd</p>
+					<p>SWIFT code:1234A45F45R</p>
+					<p>DATE:01/01/2014</p>
+					<p>DUE:{{invoice.customer.due_date}}</p>
+			</div>
+		</div>	
+	</div>
+	<div class="col-md-10 m-t">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Item</th>
+					<th>Description</th>
+					<th>Quantity</th>
+					<th>Unit Cost</th>
+					<th>Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				  <tr ng-repeat="item in invoice.items">
+			          <td><a href ng-hide="printMode" ng-click="removeItem(item)" class="btn btn-danger">[X]</a></td>
+			           <td><input ng-model="item.item" placeholder="item"></td>
+			          <td><input ng-model="item.description" placeholder="Description"></td>
+			          <td><input ng-model="item.qty" value="1" size="4" ng-required ng-validate="integer" placeholder="qty"></td>
+			          <td><input ng-model="item.cost" value="0.00" ng-required ng-validate="number" size="6" placeholder="cost"></td>
+			          <td align="right">{{item.cost * item.qty | currency}}</td>
+          
+      			  </tr>
+			      <tr ng-hide="printMode">
+			          <td colspan="5"><a class="btn btn-primary" href ng:click="addItem()" >Add Item</a></td>
+			      </tr>
+			      <tr>
+			          <td colspan="5" align="right">
+			            Sub Total
+			          </td>
+			          <td align="right">
+			            {{invoice_sub_total() | currency}}
+			          </td>
+			      </tr>
+			      <tr>
+			          <td colspan="5" align="right">
+			            Tax(%): <input ng:model="invoice.tax" ng:validate="number" style="width:43px">
+			          </td>
+			          <td align="right">
+			            {{calculate_tax() | currency}}
+			          </td>
+			      </tr>
+			      <tr>
+			          <td colspan="5" align="right">
+			            Grand Total:
+			          </td>
+			          <td align="right">
+			            {{calculate_grand_total() | currency}}
+			          </td>
+			      </tr>
+			       <tr>
+			          <td colspan="5" align="right">
+			          </td>
+			          <td align="right">
+			            <button type="button" ng-click="captureItems()" class="btn btn-primary">Submit</button>
+			          </td>
+			      </tr>
+			</tbody>
+		</table>
+	</div>
+
+</div>

@@ -26,8 +26,8 @@
 		  	<li class="active"><a><i class="fa fa-dashboard"></a></i>
 		  	<li><a><i class="fa fa-user"></i></a></li>
 		  	<li><a><i class="fa fa-key"></i></a></li> 
-		  	<!-- <li><a><i class="fa fa-file-o"></i></a></li>
-		  	<li><a><i class="fa fa-key"></i></a></li> -->
+		  	<li><a><i class="fa fa-file-o"></i></a></li>
+		  	<!-- <li><a><i class="fa fa-key"></i></a></li> -->
 		 </ul>
 	  </div>
 	  <div class="col-md-2 sidebar" role="navigation">
@@ -35,6 +35,8 @@
 				<li class="active"><a href="#/">Home</a></li>
 				<li><a href="#/manage-users"> Manage Users</a></li>
 				<li><a href="#/change-password">Change Password</a></li>
+				<li><a href="#/customers">Manage Customers</a></li>
+				<li><a href="#/invoices">Manage Invoices</a></li>
 				<!-- <li><a href="#/manage-campaigns"> Manage Campaign</a></li>
 				<li><a href="#/manage-email">Manage Email</a></li> -->
 			</ul>

@@ -2,7 +2,8 @@ angular.module('dashboardApp')
 .controller('userCtrl', ['$scope', 'userService', '$location', 'ngDialog',
 	function($scope, $userService, $location, $ngDialog){
 	$scope.btn = "Edit";
-
+	$scope.error = "";
+	$scope.result = "";
 	$userService.get()
 		.then(function(response){
 			console.log("success in userCtrl");
@@ -18,6 +19,7 @@ angular.module('dashboardApp')
 	$scope.userDetails = function (currentUser) {	
 		console.log(currentUser.id);
 		$scope.error = "";	
+		$scope.result = "";
 		$scope.userdetails = currentUser;
 		currentUser.active = "active";
 		angular.forEach($scope.userList, function(user){
@@ -60,6 +62,8 @@ angular.module('dashboardApp')
   	};
 
   	$scope.editUser = function(user){
+  		$scope.error = "";	
+		$scope.result = "";
   		//$userService.setUser(user);
   		if($scope.btn == "Edit"){
 	  		user.action = 0; 

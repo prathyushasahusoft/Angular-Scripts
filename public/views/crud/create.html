@@ -1,0 +1,62 @@
+<div  ng-app="dashboardApp" ng-controller="createCrudCtrl">
+	<div class="page-header-wrap">
+		<h1 class="page-heading">{{crud.action}}</h1>
+		<a href="javascript:;" onclick="window.history.back();" ng-click="resetApplication()" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-chevron-left"></i> Back</a>
+	</div>
+
+	<ol class="breadcrumb">
+		<li>
+			<a href="#/"><i class="glyphicon glyphicon-home"></i></a>
+		</li>
+		<li>
+			<a href="#/manage-crud">Crud</a>
+		</li>
+		<li class="active">{{crud.action}}</li>
+	</ol>
+
+	<div class="content-wrapper">	
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<form action="javascript:;" method="" class="form-horizontal m-t" role="form" name="crudForm">
+							<div class="form-group">
+								<label class="col-sm-3 control-label">First Name</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" name="firstname" ng-model="crud.firstname" required>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Last Name</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" name="lastname" ng-model="crud.lastname" required>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">DOB</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" name="dob" ng-model="crud.dob" required>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Qualification</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" name="qualification" ng-model="crud.qualification" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-7 col-sm-offset-3">
+									<button type="submit" ng-click="captureCrud()" class="btn btn-primary">Save Crud</button>
+									<button ng-click="reset()" class="btn btn-default">Reset</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
