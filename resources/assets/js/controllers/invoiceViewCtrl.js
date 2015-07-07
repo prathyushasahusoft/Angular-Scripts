@@ -23,12 +23,21 @@ function($scope, $invoiceService, $location, $ngDialog){
         });
         return total;
     }
-     $scope.calculate_tax = function() {
+    $scope.calculate_tax = function() {
         return (($scope.invoice.tax * $scope.invoice_sub_total())/100);
     }
+    $scope.calculate_eduation_cess = function() {
+        return (($scope.invoice.eduation_cess * $scope.invoice_sub_total())/100);
+    }
+    $scope.calculate_secondry_cess = function() {
+        return (($scope.invoice.secondry_cess * $scope.invoice_sub_total())/100);
+    }
     $scope.calculate_grand_total = function() {
-        localStorage["invoice"] = JSON.stringify($scope.invoice);
-        return $scope.calculate_tax() + $scope.invoice_sub_total();
+        return $scope.calculate_tax() + 
+        	   $scope.calculate_eduation_cess()+
+        	   $scope.calculate_secondry_cess()+
+        	   $scope.invoice_sub_total();
     } 
+
 
 }]);
