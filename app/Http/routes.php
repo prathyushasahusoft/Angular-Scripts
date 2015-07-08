@@ -52,6 +52,7 @@ Route::group([
 		    Route::resource('customer', 'Api\v1\customerController');
 		    Route::resource('invoice', 'Api\v1\invoiceController');
 		    Route::resource('invoice-items', 'Api\v1\invoiceItemController');
+		    Route::resource('invoice-summary', 'Api\v1\invoiceSummaryController');
 		    Route::resource('test', 'Api\v1\testController');
 		});	
 		Route::resource('password', 'ChangePasswordController', ['only' => ['index', 'update']]);

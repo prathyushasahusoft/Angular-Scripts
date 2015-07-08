@@ -86,4 +86,52 @@ angular.module('dashboardApp')
 			}
 		);
 	}
+	this.saveItems = function(data){
+		/*console.log("saveItems");
+		console.log(data);*/	
+		console.log("the invoice service - save invoice-item details");	
+		return APIService.post("/api/v1/invoice-items", data)
+			.success(function(response){
+				console.log("returning from app service");
+				console.log(response);
+				return "successful";
+			})
+			.error(function(response){
+				console.log("error in returning from app service");
+				console.log(response);
+				return response;
+			});	
+	}
+	this.saveSummary = function(data){
+		console.log("the invoice service - save invoice-item details");	
+		return APIService.post("/api/v1/invoice-summary", data)
+			.success(function(response){
+				console.log("returning from app service");
+				console.log(response);
+				return "successful";
+			})
+			.error(function(response){
+				console.log("error in returning from app service");
+				console.log(response);
+				return response;
+			});	
+	}
+	this.removeItem = function(data){
+		alert("hii");
+		console.log("the invoice service - delete an invoice-item");	
+			
+		var response = APIService.delete("/api/v1/invoice-items/" + data);
+		console.log(response);	
+			
+	}
+	this.getItems = function(data){
+		console.log("the invoice service - get invoice details");	
+		
+		return APIService.get("/api/v1/invoice-items?invoice_id="+data.id)
+			.then(function(response){
+				console.log("success in invoiceService");
+				return response;
+			}
+		);
+	}
 }]);

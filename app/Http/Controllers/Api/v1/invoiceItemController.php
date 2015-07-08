@@ -52,7 +52,7 @@ class invoiceItemController extends BaseApiController
 
             return $this->successResponse($senddata, $meta);
         }catch(\Exception $e){
-             Log::error("error i customer controller");
+             Log::error("error in customer controller");
              return $this->failResponse($e->getMessage());
         }
     }
@@ -79,22 +79,29 @@ class invoiceItemController extends BaseApiController
             if (!$admin) {
                 return $this->failResponse('admin not logged in');
             }
-            $invoiceItemObj = new InvoiceItems;
-            $data = $this->getRequestBody();  
-            $invoiceItemObj->invoice_id = $data['inovice_id'];
-            $invoiceItemObj->item = $data['item'];
-            $invoiceItemObj->description = $data['description'];
-            $invoiceItemObj->quantity = $data['quantity'];  
-            $invoiceItemObj->unitcost = $data['unitcost'];
-            $invoiceItemObj->save(); 
-            if(!$invoiceItemObj->save()){
-                Log::error("error in saving"); 
-                $errors = $invoiceItemObj->getErrors();
-                return $this->failResponse('Validation failed. Cannot save data.'.$errors);
+            $dataItems = $this->getRequestBody(); 
+            Log::error("dataItems");
+            Log::error($dataItems);
+            Log::error(count($dataItems));
+            foreach($dataItems as $data) {
+                Log::error("data");
+                Log::error($data); 
+                $invoiceItemObj = new InvoiceItem;
+                $invoiceItemObj->invoice_id = $data['invoice_id'];
+                $invoiceItemObj->item = $data['item'];
+                $invoiceItemObj->description = $data['description'];
+                $invoiceItemObj->quantity = $data['quantity'];  
+                $invoiceItemObj->unitcost = $data['unitcost'];
+                $invoiceItemObj->save(); 
             }
-            else{
-                return $this->successResponse('updated sucessfully');
-            }
+            /*if(!$invoiceItemObj->save()){
+                    Log::error("error in saving"); 
+                    $errors = $invoiceItemObj->getErrors();
+                    return $this->failResponse('Validation failed. Cannot save data.'.$errors);
+                }
+                else{
+                    return $this->successResponse('updated sucessfully');
+                }*/
         }catch (\Exception $e){
             Log::error($invoiceItemObj->getErrors());
             return $this->failResponse($e->getMessage());
@@ -115,7 +122,7 @@ class invoiceItemController extends BaseApiController
             if (!$admin) {
                 return $this->failResponse('admin not logged in');
             }
-            $invoiceItemObj = InvoiceItems::find($id);
+            $invoiceItemObj = InvoiceItem::find($id);
             if (count($invoiceItemObj) == 0) {
                 return $this->failResponse('customer id not found');
             }
@@ -151,7 +158,7 @@ class invoiceItemController extends BaseApiController
             if (!$admin) {
                 return $this->failResponse('admin not logged in');
             }
-            $invoiceItemObj = InvoiceItems::find($id);
+            $invoiceItemObj = InvoiceItem::find($id);
 
             if (count($invoiceItemObj) == 0) {
                 return $this->failResponse('customer id not found');
@@ -189,7 +196,7 @@ class invoiceItemController extends BaseApiController
             if (!$admin) {
                 return $this->failResponse('admin not logged in');
             }
-            $invoiceItemObj = InvoiceItems::find($id);
+            $invoiceItemObj = InvoiceItem::find($id);
             if (count($invoiceItemObj) == 0) {
                 return $this->failResponse('customer id not found'); 
             }

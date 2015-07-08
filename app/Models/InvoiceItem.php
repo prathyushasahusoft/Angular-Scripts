@@ -4,10 +4,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class InvoiceItem extends BaseModel {
     
-    protected $table = 'invoice';
+    protected $table = 'invoice_items';
 
     protected $rules = [
-        'invoice_id' => 'required',
+        //'invoice_id' => 'required',
         'item' => 'required',
         'description' => 'required',
         'quantity' => 'required',

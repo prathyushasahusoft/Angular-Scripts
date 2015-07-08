@@ -42,15 +42,15 @@
 			<tbody>
 				  <tr ng-repeat="item in invoice.items">
 				 	 <td></td>
-			           <td><input ng-model="item.item" placeholder="item"></td>
-			          <td><input ng-model="item.description" placeholder="Description"></td>
-			          <td><input ng-model="item.qty" value="1" size="4" ng-required ng-validate="integer" placeholder="qty"></td>
-			          <td><input ng-model="item.cost" value="0.00" ng-required ng-validate="number" size="6" placeholder="cost"></td>
-			          <td align="right">{{item.cost * item.qty | currency}}</td>
+			           <td><input ng-model="item.item" placeholder="item"    ng-readonly="item.allowEdit"></td>
+			          <td><input ng-model="item.description" placeholder="Description" ng-readonly="item.allowEdit"></td>
+			          <td><input ng-model="item.quantity" value="1" size="4" ng-required ng-validate="integer" placeholder="quantity" ng-readonly="item.allowEdit"></td>
+			          <td><input ng-model="item.unitcost" value="0.00" ng-required ng-validate="number" size="6" placeholder="cost" ng-readonly="item.allowEdit"></td>
+			          <td align="right">{{item.unitcost * item.quantity | currency}}</td>
           			   <td><a href ng-hide="printMode" ng-click="removeItem(item)" class="btn btn-danger">[X]</a></td>
       			  </tr>
 			      <tr ng-hide="printMode">
-			          <td colspan="5"><a class="btn btn-primary" href ng-click="addItem()" >Add Item</a></td>
+			          <td colspan="5"><a class="btn btn-primary" href ng-click="addItem()">Add Item</a></td>
 			      </tr>
 			      <tr>
 			          <td colspan="5" align="right">
@@ -62,26 +62,26 @@
 			      </tr>
 			      <tr>
 			          <td colspan="5" align="right">
-			           Service Tax(%): <input ng-model="invoice.tax" ng-validate="number" style="width:43px">
+			           Service Tax(%): <input ng-model="invoice.service_tax" ng-validate="number" style="width:43px">
 			          </td>
 			          <td align="right">
-			            {{calculate_tax() | currency}}
+			            {{calculate_service_tax() | currency}}
 			          </td>
 			      </tr>
 			      <tr>
 			          <td colspan="5" align="right">
-			           Education Cess(%): <input ng-model="invoice.eduation_cess" ng-validate="number" style="width:43px">
+			           Education Cess(%): <input ng-model="invoice.education_cess" ng-validate="number" style="width:43px">
 			          </td>
 			          <td align="right">
-			            {{calculate_eduation_cess() | currency}}
+			            {{calculate_education_cess() | currency}}
 			          </td>
 			      </tr>
 			       <tr>
 			          <td colspan="5" align="right">
-			           Secondary Cess(%): <input ng-model="invoice.secondry_cess" ng-validate="number" style="width:43px">
+			           Secondary Cess(%): <input ng-model="invoice.secondary_cess" ng-validate="number" style="width:43px">
 			          </td>
 			          <td align="right">
-			            {{calculate_secondry_cess() | currency}}
+			            {{calculate_secondary_cess() | currency}}
 			          </td>
 			      </tr>
 			      <tr>

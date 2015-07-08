@@ -15,7 +15,7 @@ class CreateInvoiceItemsTable extends Migration
         Schema::create('invoice_items', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            $table->integer('inovice_id');
+            $table->integer('invoice_id');
             $table->string('item');
             $table->text('description')->nullable();
             $table->integer('quantity');

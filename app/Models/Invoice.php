@@ -36,5 +36,9 @@ class Invoice extends BaseModel {
     {
         return $this->hasMany('App\Models\InvoiceItems', 'invoice_id');
     }
+    public function Invoice_summary()
+    {
+        return $this->hasOne('App\Models\InvoiceSummary', 'invoice_id');
+    }
     
 }
