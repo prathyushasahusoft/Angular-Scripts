@@ -334,31 +334,29 @@ function($scope, $invoiceService, $location, $ngDialog){
 		.then(function(response){
 			console.log("success in invoiceCtrl");
 			$scope.invoice.items = response.result;
-			angular.forEach($scope.invoice.items, function(invoiceItem){
-				invoiceItem.allowEdit = 1;			
+			angular.forEach($scope.invoice.items, function(invoiceItem){			
 			});
 			$scope.invoice.summary = [];
 			console.log(response);
 		});
 
 	$scope.addItem = function() {
-        $scope.invoice.items.push({quantity:0, unitcost:0, description:"",allowEdit:0,invoice_id:$scope.invoice.id});    
-        $scope.invoice.newItems.push({quantity:$scope.invoice.items.quantity,
-                                     unitcost:$scope.invoice.items.quantity,
-                                     description:$scope.invoice.items.quantity,
-                                     item:$scope.invoice.items.quantity,
-                                     allowEdit:0,
-                                     invoice_id:$scope.invoice.id});   
+        $scope.invoice.newItems.push({quantity:0, unitcost:0, description:"",invoice_id:$scope.invoice.id});    
         console.log("scope.invoice.newItems");
         console.log($scope.invoice.newItems);
     }
     $scope.removeItem = function(item) {
+        alert(item.id);
     	$invoiceService.removeItem(item);
         $scope.invoice.items.splice($scope.invoice.items.indexOf(item), 1);    
+        $scope.invoice.sub_total = $scope.invoice.sub_total-(item.quantity*item.unitcost);
     }
     $scope.invoice_sub_total = function() {
         var total = 0.00;
         angular.forEach($scope.invoice.items, function(item, key){
+          total += (item.quantity * item.unitcost);
+        });
+        angular.forEach($scope.invoice.newItems, function(item, key){
           total += (item.quantity * item.unitcost);
         });
         $scope.invoice.sub_total = total;
@@ -387,8 +385,11 @@ function($scope, $invoiceService, $location, $ngDialog){
          							  education_cess:$scope.invoice.education_cess, 
          							  secondary_cess:$scope.invoice.secondary_cess,
          							  grand_total: $grand_total});	
+        console.log("scope.invoice.summary");
+        console.log($scope.invoice.summary);
     	$invoiceService.saveItems($scope.invoice.newItems);
     	$invoiceService.saveSummary($scope.invoice.summary);
+        $location.url("/invoices");
     }
 
 }]);

@@ -117,17 +117,16 @@ angular.module('dashboardApp')
 			});	
 	}
 	this.removeItem = function(data){
-		alert("hii");
 		console.log("the invoice service - delete an invoice-item");	
 			
-		var response = APIService.delete("/api/v1/invoice-items/" + data);
+		var response = APIService.delete("/api/v1/invoice-items/" + data.id);
 		console.log(response);	
 			
 	}
 	this.getItems = function(data){
 		console.log("the invoice service - get invoice details");	
 		
-		return APIService.get("/api/v1/invoice-items?invoice_id="+data.id)
+		return APIService.get("/api/v1/invoice-items")
 			.then(function(response){
 				console.log("success in invoiceService");
 				return response;

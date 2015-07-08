@@ -192,6 +192,7 @@ class invoiceItemController extends BaseApiController
     public function destroy($id)
     {
         try{
+            Log::error($id);
             $admin = \Auth::User();
             if (!$admin) {
                 return $this->failResponse('admin not logged in');

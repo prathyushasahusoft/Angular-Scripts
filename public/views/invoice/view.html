@@ -42,10 +42,19 @@
 			<tbody>
 				  <tr ng-repeat="item in invoice.items">
 				 	 <td></td>
-			           <td><input ng-model="item.item" placeholder="item"    ng-readonly="item.allowEdit"></td>
-			          <td><input ng-model="item.description" placeholder="Description" ng-readonly="item.allowEdit"></td>
-			          <td><input ng-model="item.quantity" value="1" size="4" ng-required ng-validate="integer" placeholder="quantity" ng-readonly="item.allowEdit"></td>
-			          <td><input ng-model="item.unitcost" value="0.00" ng-required ng-validate="number" size="6" placeholder="cost" ng-readonly="item.allowEdit"></td>
+			          <td>{{item.item}}</td>
+			          <td>{{item.description}}</td>
+			          <td>{{item.quantity}}</td>
+			          <td>{{item.unitcost}}</td>
+			          <td align="right">{{item.unitcost * item.quantity | currency}}</td>
+          			   <td><a href ng-hide="printMode" ng-click="removeItem(item)" class="btn btn-danger">[X]</a></td>
+      			  </tr>
+				  <tr ng-repeat="item in invoice.newItems">
+				 	 <td></td>
+			           <td><input ng-model="item.item" placeholder="item"></td>
+			          <td><input ng-model="item.description" placeholder="Description"></td>
+			          <td><input ng-model="item.quantity" value="1" size="4" ng-required ng-validate="integer" placeholder="quantity"></td>
+			          <td><input ng-model="item.unitcost" value="0.00" ng-required ng-validate="number" size="6" placeholder="cost"></td>
 			          <td align="right">{{item.unitcost * item.quantity | currency}}</td>
           			   <td><a href ng-hide="printMode" ng-click="removeItem(item)" class="btn btn-danger">[X]</a></td>
       			  </tr>
